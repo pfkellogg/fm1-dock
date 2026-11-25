@@ -155,6 +155,10 @@ typedef struct hb_host {
     /* a panel module (HB_F_PANEL) with its own octave says the note its key 0 (F3) plays, n 0 none (the host's
      * octave): an SMK-37's outer keys, the host's, go on from it (a module checks size first) */
     void (*key_base)(uint32_t n);
+    /* the sound playing now, as the synth names it ("B3 ORGAN Gospel PERC": its name and its sound, in memory the module keeps; "" none),
+     * for whoever shows or follows it (FM-1 Big Screen's Rich plays the closest instrument); called when it changes
+     * (a module checks size first) */
+    void (*sound_name)(const char *s);
 } hb_host_t;
 enum { HB_BOARD_FM1 = 0, HB_BOARD_SMK37 = 1 };
 /* the host has field f of hb_host_t (an older one ends before it) */
